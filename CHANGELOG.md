@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.4.0 — 2026-08-16
+
+- 공식 소스 1패스: changelog·blog·docs·press·support
+- `collect_official.py`가 사이트맵·홈 HTML을 분류 (네트워크 없음)
+- `validate_official.py` + 항목 상한 12/8. last30days는 community만
+
 ## 0.3.0 — 2026-08-16
 
 - 파이프라인을 A–F(범위·표면·맥락·기술 심층·검증·종합)로 고정

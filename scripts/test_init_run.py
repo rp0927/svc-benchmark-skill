@@ -70,6 +70,9 @@ def test_dirs_layout_templates() -> None:
         persona = json.loads((out / "notes/persona-trials.json").read_text(encoding="utf-8"))
         check(packets.get("method") == "none", f"packets.method {packets.get('method')}")
         check(persona.get("mode") == "none", f"persona.mode {persona.get('mode')}")
+        official = json.loads((out / "notes/official-sources.json").read_text(encoding="utf-8"))
+        kinds = [item.get("kind") for item in official.get("feeds", [])]
+        check(kinds[:5] == ["changelog", "blog", "docs", "press", "support"], f"official kinds {kinds}")
         sources = json.loads((out / "notes/sources.json").read_text(encoding="utf-8"))
         privacy = json.loads((out / "notes/privacy-exceptions.json").read_text(encoding="utf-8"))
         manifest = json.loads((out / "sources/audit-manifest.json").read_text(encoding="utf-8"))

@@ -30,6 +30,8 @@ KNOWN_FAILURES = (
     "persona-trial-as-mutation",
     "private-code-as-source",
     "packet-from-raw-har",
+    "official-from-snippet",
+    "last30days-as-official",
 )
 
 

@@ -1,6 +1,6 @@
 ---
 name: svc-benchmark
-version: "0.3.0"
+version: "0.4.0"
 homepage: https://github.com/rp0927/svc-benchmark-skill
 repository: https://github.com/rp0927/svc-benchmark-skill
 description: "남의 서비스를 열어 사이트맵·기능 카드·네트워크 실측·대표 시도까지 분해한다. JTBD로 경쟁과 대안을 가른 뒤 SWOT로 정리한다. 트리거 — 서비스 벤치마킹, 기능 해체, teardown, 사이트맵, 최신 기능 검증, JTBD, 경쟁 지형."
@@ -17,6 +17,7 @@ description: "남의 서비스를 열어 사이트맵·기능 카드·네트워�
 - 조사 뼈대: [references/jtbd-scan.md](references/jtbd-scan.md)
 - 프로세스: [references/process.md](references/process.md)
 - 기술 심층: [references/tech-depth.md](references/tech-depth.md)
+- 공식 소스: [references/official-sources.md](references/official-sources.md)
 - 출처 감사: [references/source-audit.md](references/source-audit.md)
 - 유형: [references/product-modules.md](references/product-modules.md)
 - 안전: [references/safety.md](references/safety.md)
@@ -181,11 +182,11 @@ python3 "$SKILL/scripts/validate_cards.py" notes/feature-cards.json
 
 ### 4. 지금 미는 것
 
-최근 30–90일 공식 릴리스. 한 문장 전략 + 날짜 표. 6개월 전 리뷰는 날짜를 붙여 할인한다.
+공식 소스 1패스에서 채운다. changelog를 여기서 다시 열지 않는다. 90일 안 공식 릴리스 한 문장 + 날짜 표. 칸은 [official-sources.md](references/official-sources.md).
 
 ### 5. 외부 소식 + 역사
 
-공식 RSS/changelog + 웹 검색 30–90일. `--news=last30days`면 그 스킬을 호출하고 `notes/external.md`에 인용 표만 넣는다.
+같은 패스의 `press`와 `community[]`. 검색 스니펫을 원문으로 쓰지 않는다. `--news=last30days`면 인용 표만 `community[]`에 넣는다. 엔진 출력을 본문에 복사하지 않는다.
 
 역사는 `notes/timeline.json`. 본문은 표. 연대기 산문은 쓰지 않는다.
 
@@ -197,9 +198,17 @@ python3 "$SKILL/scripts/validate_cards.py" notes/feature-cards.json
 
 ### 6. 문서 표면
 
-changelog와 매뉴얼이 제품이면 한 번 더 분해한다. 뉴스와 가이드를 한 페이지에 섞지 않는다.
+같은 패스의 `docs`·`support`. 뉴스와 가이드를 한 페이지에 섞지 않는다. 문서가 제품일 때만 `notes/docs.md`를 추가로 분해한다.
 
-산출: `notes/docs.md` (해당할 때만. 헤딩은 보고서에 남긴다)
+```bash
+python3 "$SKILL/scripts/collect_official.py" \
+  --sitemap notes/sitemap.md \
+  --html evidence/docs/home.html \
+  --out notes/official-sources.json
+python3 "$SKILL/scripts/validate_official.py" --root .
+```
+
+산출: `notes/official-sources.json` (+ 해당 시 `notes/docs.md`)
 
 ### 7. 클라이언트 실측
 
@@ -289,6 +298,7 @@ changelog가 “방금 냈다”고 한 것만. 9와 섞지 않는다.
 ```bash
 python3 "$SKILL/scripts/validate_report.py" report/report.md
 python3 "$SKILL/scripts/validate_scan.py" --root .
+python3 "$SKILL/scripts/validate_official.py" --root .
 python3 "$SKILL/scripts/validate_tech.py" --root .
 python3 "$SKILL/scripts/validate_cards.py" notes/feature-cards.json
 python3 "$SKILL/scripts/validate_coverage.py" --report report/report.md --cards notes/feature-cards.json
@@ -322,6 +332,7 @@ python3 "$PROJECT_ROOT/.agents/scripts/validate-pdf-output.py" report/report.htm
 - Evidence Gate: 연 페이지 또는 fetch 원문 없이 완료 선언 금지
 - 일(JTBD) 없이 기능 목록으로 시작 금지. 지도 전에 `--phase=jtbd`, 함대 전에 `--phase=segments`
 - 기술 심층 다섯 칸(`validate_tech.py`)을 건너뛰지 않는다. 페르소나 걷기로 채팅을 보내지 않는다
+- 공식 소스 1패스(`validate_official.py`). changelog를 세 번 열지 않는다. last30days를 공식으로 쓰지 않는다
 - SWOT 생략 금지. 에이전트 자기보고를 원문 확인으로 쓰지 않는다. 실패는 `notes/failures.json`에 이름으로 적는다
 - 스크린샷 없는 카드는 `evidence.observed=docs-only`
 - “경쟁사는 X를 못한다”는 해당 사이트 확인 전 금지
@@ -344,6 +355,8 @@ python3 "$SKILL/scripts/test_validate_sources.py"
 python3 "$SKILL/scripts/test_validate_privacy.py"
 python3 "$SKILL/scripts/test_validate_audit.py"
 python3 "$SKILL/scripts/test_validate_scan.py"
+python3 "$SKILL/scripts/test_validate_official.py"
+python3 "$SKILL/scripts/test_collect_official.py"
 python3 "$SKILL/scripts/test_validate_tech.py"
 python3 "$SKILL/scripts/test_collect_cli.py"
 python3 "$SKILL/scripts/test_skill_step12_gates.py"

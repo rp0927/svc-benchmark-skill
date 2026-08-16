@@ -107,6 +107,17 @@ def _templates(as_of: str, *, scan: str) -> dict[str, dict]:
             "missing_reason": "",
             "trials": [],
         },
+        "notes/official-sources.json": {
+            "as_of": as_of,
+            "window_days": 90,
+            "missing_reason": "",
+            "feeds": [
+                {"kind": kind, "url": "", "found": False, "missing_reason": ""}
+                for kind in ("changelog", "blog", "docs", "press", "support")
+            ],
+            "items": [],
+            "community": [],
+        },
         "notes/sources.json": {
             "as_of": as_of,
             "primary": [],

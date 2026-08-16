@@ -22,10 +22,11 @@ B  표면
    B2 브라우저 순회        evidence/screenshots/
    B3 기능 카드            notes/feature-cards.json
 
-C  맥락
-   C1 지금 미는 것
-   C2 외부 소식·역사       notes/timeline.json
-   C3 문서 표면            notes/docs.md
+C  맥락 (공식 소스 1패스)            ← 칸은 official-sources.md
+   C0 지도에서 후보 분류   collect_official.py
+   C1 지금 미는 것         official items 90일
+   C2 외부 소식·역사       press + community + timeline.json
+   C3 문서 표면            docs·support. 제품일 때만 docs.md
    C4 CLI (해당 시)        notes/cli.md
 
 D  기술 심층                         ← 칸은 tech-depth.md
@@ -136,6 +137,7 @@ python3 "$SKILL/scripts/validate_scan.py" --root . --phase=close
 | `notes/segments.json` | 선택 | 필수 | 함대 전 1건 이상 |
 | `notes/sitemap.md` | 필수 | 깊은 제품만 | `job` 이후 |
 | `notes/feature-cards.json` | 필수 | 깊은 제품만 | 빈칸에 `missing_reason` |
+| `notes/official-sources.json` | 필수 | 얕으면 `landscape-shallow` | changelog·blog·docs·press·support |
 | `notes/packets.json` | 필수 | 얕으면 `landscape-shallow` | HTTP 흐름. pcap 아님 |
 | `notes/code-surface.json` | 필수 | 같음 | 공개 코드만 |
 | `notes/impl-methods.json` | 필수 | 같음 | 관측된 구현 층 |
