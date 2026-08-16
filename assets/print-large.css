@@ -1,0 +1,152 @@
+/* svc-benchmark 인쇄본. research.css의 9.5pt를 덮는다. */
+
+body {
+  font-size: 12pt;
+  line-height: 1.75;
+  color: #1f2937;
+  background: #ffffff;
+}
+
+.container {
+  max-width: 920px;
+  padding: 40px 48px 56px;
+}
+
+h1 {
+  font-size: 26px;
+  line-height: 1.32;
+  font-weight: 800;
+  color: #111827;
+}
+
+h2 {
+  font-size: 20px;
+  line-height: 1.4;
+  font-weight: 700;
+  color: #062f55;
+  margin-top: 40px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid #e5eaf1;
+  break-after: avoid;
+  page-break-after: avoid;
+}
+
+h3 {
+  font-size: 16px;
+  line-height: 1.5;
+  font-weight: 700;
+  color: #111827;
+  margin-top: 24px;
+  break-after: avoid;
+  page-break-after: avoid;
+}
+
+h4 {
+  font-size: 14.5px;
+  line-height: 1.5;
+  font-weight: 700;
+}
+
+p,
+li {
+  font-size: 12pt;
+  line-height: 1.75;
+}
+
+.cover-page {
+  padding-top: 140px;
+}
+
+.cover-page h1 {
+  font-size: 30px;
+  line-height: 1.28;
+}
+
+.cover-subtitle {
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.cover-meta {
+  font-size: 13px;
+}
+
+.summary-box,
+.briefing-box,
+.callout,
+.panel {
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+.summary-box h2 {
+  font-size: 18px;
+  border-bottom: none;
+}
+
+table {
+  font-size: 11pt !important;
+  line-height: 1.55;
+  break-inside: auto !important;
+  page-break-inside: auto !important;
+}
+
+th {
+  font-size: 11pt;
+  font-weight: 700;
+  padding: 7px 8px;
+  white-space: normal;
+}
+
+td {
+  font-size: 11pt;
+  padding: 6px 8px;
+}
+
+tr {
+  break-inside: avoid !important;
+  page-break-inside: avoid !important;
+}
+
+code,
+pre {
+  font-size: 10.5pt;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+a {
+  overflow-wrap: anywhere;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  max-height: 300px;
+  object-fit: contain;
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+blockquote {
+  font-size: 12pt;
+  break-inside: avoid;
+}
+
+@media print {
+  body {
+    font-size: 12pt;
+    background: #ffffff;
+  }
+
+  .container {
+    max-width: 100%;
+    padding: 0;
+  }
+
+  h2,
+  h3 {
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+}

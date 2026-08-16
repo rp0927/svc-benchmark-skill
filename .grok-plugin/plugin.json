@@ -1,0 +1,18 @@
+{
+  "name": "svc-benchmark",
+  "version": "0.2.0",
+  "description": "Open someone else's product and break down sitemap, feature cards, runtime evidence, and SWOT from the job to be done.",
+  "author": {
+    "name": "Seong Gil Je",
+    "email": "rp0927@gmail.com",
+    "url": "https://github.com/rp0927"
+  },
+  "repository": "https://github.com/rp0927/svc-benchmark-skill",
+  "homepage": "https://github.com/rp0927/svc-benchmark-skill",
+  "license": "MIT",
+  "keywords": [
+    "svc-benchmark",
+    "teardown",
+    "jtbd"
+  ]
+}
