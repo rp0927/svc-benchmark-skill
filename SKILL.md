@@ -1,6 +1,8 @@
 ---
 name: svc-benchmark
 version: "0.2.0"
+homepage: https://github.com/rp0927/svc-benchmark-skill
+repository: https://github.com/rp0927/svc-benchmark-skill
 description: "남의 서비스를 열어 사이트맵·기능 카드·네트워크 실측·대표 시도까지 분해한다. JTBD로 경쟁과 대안을 가른 뒤 SWOT로 정리한다. 트리거 — 서비스 벤치마킹, 기능 해체, teardown, 사이트맵, 최신 기능 검증, JTBD, 경쟁 지형."
 ---
 

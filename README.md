@@ -51,4 +51,6 @@ bash scripts/run_tests.sh
 - [SKILL.md](SKILL.md) — 라우팅·금지·게이트 명령
 - [references/process.md](references/process.md) — 실행 프로세스와 필수 산출
 - [references/jtbd-scan.md](references/jtbd-scan.md) — 일·지형·실패 이름
+- [docs/benchmark-results.md](docs/benchmark-results.md) — 인기 스킬·사내 스킬 벤치 결과
 - [docs/peer-audit.md](docs/peer-audit.md) — 이웃 스킬 현황 점검
+- [docs/upgrade-plan.md](docs/upgrade-plan.md) — 고도화 단계 0–4
