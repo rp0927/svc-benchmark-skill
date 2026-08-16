@@ -1,6 +1,6 @@
 ---
 name: svc-benchmark
-version: "0.2.0"
+version: "0.3.0"
 homepage: https://github.com/rp0927/svc-benchmark-skill
 repository: https://github.com/rp0927/svc-benchmark-skill
 description: "남의 서비스를 열어 사이트맵·기능 카드·네트워크 실측·대표 시도까지 분해한다. JTBD로 경쟁과 대안을 가른 뒤 SWOT로 정리한다. 트리거 — 서비스 벤치마킹, 기능 해체, teardown, 사이트맵, 최신 기능 검증, JTBD, 경쟁 지형."
@@ -16,6 +16,7 @@ description: "남의 서비스를 열어 사이트맵·기능 카드·네트워�
 - 보고서: [references/report-contract.md](references/report-contract.md)
 - 조사 뼈대: [references/jtbd-scan.md](references/jtbd-scan.md)
 - 프로세스: [references/process.md](references/process.md)
+- 기술 심층: [references/tech-depth.md](references/tech-depth.md)
 - 출처 감사: [references/source-audit.md](references/source-audit.md)
 - 유형: [references/product-modules.md](references/product-modules.md)
 - 안전: [references/safety.md](references/safety.md)
@@ -244,9 +245,19 @@ python3 "$SKILL/scripts/measure_network.py" \
 
 산출: `notes/runtime.md` + `evidence/network/`
 
+### 8b. 기술 심층
+
+패킷 흐름, 공개 코드, 구현 방법, 속도·특징, 페르소나 사용성. 칸은 [tech-depth.md](references/tech-depth.md). 기본 H2는 늘리지 않고 런타임·카드·대표 쿼리·인사이트에 접는다. 비공개 코드를 원천으로 쓰지 않는다. pcap은 하지 않는다.
+
+```bash
+python3 "$SKILL/scripts/validate_tech.py" --root .
+```
+
+산출: `notes/packets.json` `notes/code-surface.json` `notes/impl-methods.json` `notes/perf.json` `notes/persona-trials.json`
+
 ### 9. 대표 쿼리
 
-대표 질의는 기본 0건이다. 승인과 `mutations_allowed`에 정확한 액션이 없으면 실행하지 않고 docs-only 또는 기존 결과 관측으로 남긴다.
+대표 질의는 기본 0건이다. 승인과 `mutations_allowed`에 정확한 액션이 없으면 실행하지 않고 docs-only 또는 기존 결과 관측으로 남긴다. 페르소나 사용성은 공개 화면을 일로 걷는 것이다. 채팅·가입·결제를 보내지 않는다.
 
 승인이 있을 때만 매뉴얼·공식 예제에서 표면이 다른 쿼리를 고른다. 2단계와 같은 표면을 반복하지 않는다.
 
@@ -278,6 +289,7 @@ changelog가 “방금 냈다”고 한 것만. 9와 섞지 않는다.
 ```bash
 python3 "$SKILL/scripts/validate_report.py" report/report.md
 python3 "$SKILL/scripts/validate_scan.py" --root .
+python3 "$SKILL/scripts/validate_tech.py" --root .
 python3 "$SKILL/scripts/validate_cards.py" notes/feature-cards.json
 python3 "$SKILL/scripts/validate_coverage.py" --report report/report.md --cards notes/feature-cards.json
 python3 "$SKILL/scripts/validate_sources.py" --report report/report.md --sources notes/sources.json
@@ -309,6 +321,7 @@ python3 "$PROJECT_ROOT/.agents/scripts/validate-pdf-output.py" report/report.htm
 
 - Evidence Gate: 연 페이지 또는 fetch 원문 없이 완료 선언 금지
 - 일(JTBD) 없이 기능 목록으로 시작 금지. 지도 전에 `--phase=jtbd`, 함대 전에 `--phase=segments`
+- 기술 심층 다섯 칸(`validate_tech.py`)을 건너뛰지 않는다. 페르소나 걷기로 채팅을 보내지 않는다
 - SWOT 생략 금지. 에이전트 자기보고를 원문 확인으로 쓰지 않는다. 실패는 `notes/failures.json`에 이름으로 적는다
 - 스크린샷 없는 카드는 `evidence.observed=docs-only`
 - “경쟁사는 X를 못한다”는 해당 사이트 확인 전 금지
@@ -331,6 +344,7 @@ python3 "$SKILL/scripts/test_validate_sources.py"
 python3 "$SKILL/scripts/test_validate_privacy.py"
 python3 "$SKILL/scripts/test_validate_audit.py"
 python3 "$SKILL/scripts/test_validate_scan.py"
+python3 "$SKILL/scripts/test_validate_tech.py"
 python3 "$SKILL/scripts/test_collect_cli.py"
 python3 "$SKILL/scripts/test_skill_step12_gates.py"
 ```

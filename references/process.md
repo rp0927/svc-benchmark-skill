@@ -11,15 +11,42 @@
 ## 흐름
 
 ```text
-0  로컬 선행물 훑기
-1  질문 확정 (지형 vs 필요·가격) + 폴더 + 사전 점검
-2  일(JTBD) 기록 → --phase=jtbd
-3  수집
-     product   : 지도 → 표면 → 카드 → 지금 미는 것 → 소식 → 문서 → 런타임 → 쿼리 → 최신
-     landscape : 개관 → 세그먼트 표 → --phase=segments → 함대 → 메인 재확인 → 종합 → 분석
-4  SWOT
-5  report.md + close 게이트 + 렌더
+A  범위
+   A0 로컬 선행물          notes/precheck.json
+   A1 질문 (지형 vs 가격)
+   A2 폴더 + preflight     run.json, notes/failures.json
+   A3 일(JTBD)             notes/jtbd.json  → --phase=jtbd
+
+B  표면
+   B1 지도                 notes/sitemap.md
+   B2 브라우저 순회        evidence/screenshots/
+   B3 기능 카드            notes/feature-cards.json
+
+C  맥락
+   C1 지금 미는 것
+   C2 외부 소식·역사       notes/timeline.json
+   C3 문서 표면            notes/docs.md
+   C4 CLI (해당 시)        notes/cli.md
+
+D  기술 심층                         ← 칸은 tech-depth.md
+   D1 패킷·HTTP 흐름       notes/packets.json
+   D2 공개 코드·번들·CLI   notes/code-surface.json
+   D3 구현 방법            notes/impl-methods.json
+   D4 속도·서비스 특징     notes/perf.json
+   D5 페르소나 사용성      notes/persona-trials.json
+
+E  검증
+   E1 대표 쿼리 (기본 0)   notes/queries.md
+   E2 최신 기능            notes/latest-verify.md
+
+F  종합
+   F1 SWOT                 notes/swot.json
+   F2 report + close + 렌더
 ```
+
+`--scan=landscape`는 A 다음에 개관 → 세그먼트 표 → `--phase=segments` → 함대 → 메인 재확인을 넣고, D는 깊은 제품만 채운다. 얕은 지형은 다섯 칸을 `landscape-shallow`로 닫는다.
+
+SKILL 0–12는 이 뼈대의 실행 순서다. A=0, B=1–3, C=4–7, D=8–8b, E=9–10, F=11–12.
 
 단계를 건너뛰고 검색만으로 보고서를 쓰지 않는다. 함대 자기보고를 원문으로 쓰지 않는다.
 
@@ -109,6 +136,11 @@ python3 "$SKILL/scripts/validate_scan.py" --root . --phase=close
 | `notes/segments.json` | 선택 | 필수 | 함대 전 1건 이상 |
 | `notes/sitemap.md` | 필수 | 깊은 제품만 | `job` 이후 |
 | `notes/feature-cards.json` | 필수 | 깊은 제품만 | 빈칸에 `missing_reason` |
+| `notes/packets.json` | 필수 | 얕으면 `landscape-shallow` | HTTP 흐름. pcap 아님 |
+| `notes/code-surface.json` | 필수 | 같음 | 공개 코드만 |
+| `notes/impl-methods.json` | 필수 | 같음 | 관측된 구현 층 |
+| `notes/perf.json` | 필수 | 같음 | TTFB·왕복·특징 |
+| `notes/persona-trials.json` | 필수 | 같음 | 공개 IA 걷기. 채팅 금지 |
 | `notes/sources.json` | 필수 | 필수 | 인용 URL |
 | `notes/skill-notes.md` | 권고 | 권고 | 게이트 요약 |
 | `report/report.md` | 필수 | 필수 | 프로필 목차 |

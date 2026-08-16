@@ -46,6 +46,7 @@ PDFVAL_FRAG = "$PROJECT_ROOT/.agents/scripts/validate-pdf-output.py"
 CARDS = 'python3 "$SKILL/scripts/validate_cards.py" notes/feature-cards.json'
 REPORT = 'python3 "$SKILL/scripts/validate_report.py" report/report.md'
 SCAN = 'python3 "$SKILL/scripts/validate_scan.py" --root .'
+TECH = 'python3 "$SKILL/scripts/validate_tech.py" --root .'
 OLD_SHARED = (
     "python3 .agents/skills/doc-autoaudit/scripts/audit_gate.py",
     "node .agents/skills/_output-rules/convert.js",
@@ -101,6 +102,7 @@ def test_step12_has_live_paths() -> None:
         for needle, name in (
             (REPORT, "validate_report"),
             (SCAN, "validate_scan"),
+            (TECH, "validate_tech"),
             (CARDS, "validate_cards"),
             (COVERAGE, "validate_coverage"),
             (SOURCES, "validate_sources"),
@@ -124,8 +126,10 @@ def test_step12_has_live_paths() -> None:
             check(block.index(REPORT) < block.index(COVERAGE), f"{label} coverage before report")
         if REPORT in block and SCAN in block:
             check(block.index(REPORT) < block.index(SCAN), f"{label} scan before report")
-        if SCAN in block and CARDS in block:
-            check(block.index(SCAN) < block.index(CARDS), f"{label} cards before scan")
+        if SCAN in block and TECH in block:
+            check(block.index(SCAN) < block.index(TECH), f"{label} tech before scan")
+        if TECH in block and CARDS in block:
+            check(block.index(TECH) < block.index(CARDS), f"{label} cards before tech")
         if CARDS in block and COVERAGE in block:
             check(block.index(CARDS) < block.index(COVERAGE), f"{label} coverage before cards")
         if COVERAGE in block and SOURCES in block:
@@ -146,6 +150,7 @@ def test_shared_paths_resolve() -> None:
     for script in (
         "validate_report.py",
         "validate_scan.py",
+        "validate_tech.py",
         "validate_cards.py",
         "validate_coverage.py",
         "validate_sources.py",

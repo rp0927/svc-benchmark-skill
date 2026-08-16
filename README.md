@@ -3,7 +3,7 @@
 남의 서비스를 열어 사이트맵·기능 카드·네트워크 실측까지 분해하는 에이전트 스킬.
 
 [![CI](https://github.com/rp0927/svc-benchmark-skill/actions/workflows/ci.yml/badge.svg)](https://github.com/rp0927/svc-benchmark-skill/actions/workflows/ci.yml)
-v0.2.0 · [MIT License](LICENSE) · Python 3.9 이상
+v0.3.0 · [MIT License](LICENSE) · Python 3.9 이상
 
 기능 목록이 아니라 고객이 고용하는 일(JTBD)에서 시작한다. 진짜 경쟁과 쓰임새의 강한 대안을 가른 뒤, 관측한 제품 또는 일을 SWOT로 묶는다. 인사이트는 관찰이다. 작업 지시나 기획 xlsx가 아니다.
 
@@ -50,6 +50,7 @@ bash scripts/run_tests.sh
 
 - [SKILL.md](SKILL.md) — 라우팅·금지·게이트 명령
 - [references/process.md](references/process.md) — 실행 프로세스와 필수 산출
+- [references/tech-depth.md](references/tech-depth.md) — 패킷·코드·구현·속도·페르소나
 - [references/jtbd-scan.md](references/jtbd-scan.md) — 일·지형·실패 이름
 - [docs/benchmark-results.md](docs/benchmark-results.md) — 인기 스킬·사내 스킬 벤치 결과
 - [docs/peer-audit.md](docs/peer-audit.md) — 이웃 스킬 현황 점검

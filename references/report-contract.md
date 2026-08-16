@@ -21,7 +21,12 @@ report_profile: benchmark
 - `landscape` — 일(JTBD) 기준 지형. `--scan=landscape`. 표지의 빈 값이 아닌 `summary`가 필수다
 - `planning-analysis` — svc-planning 15항 + 관측 절. 표지의 빈 값이 아닌 `summary`가 필수다
 
-칸 정의는 [jtbd-scan.md](jtbd-scan.md).
+칸 정의는 [jtbd-scan.md](jtbd-scan.md). 기술 심층 다섯 칸은 [tech-depth.md](tech-depth.md)이고, 아래 H2에 접는다. H2를 추가하지 않는다.
+
+- 패킷·속도 → `런타임 실측` (및 결정 요약의 런타임 행)
+- 공개 코드·구현 방법 → `문서 표면` + `기능 카드`
+- 페르소나 사용성 걷기 → `대표 쿼리` (질의 전송과 구분)
+- 특징 한 줄 → `키포인트` 3번 또는 `인사이트`
 
 `summary`가 있으면 설정 패스·최신 관측 이후 문장이어야 한다. 설정 전에 쓴 한 줄을 그대로 두지 않는다.
 

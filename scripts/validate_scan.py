@@ -27,6 +27,9 @@ KNOWN_FAILURES = (
     "map-before-job",
     "fleet-before-segments",
     "improvise-without-skill",
+    "persona-trial-as-mutation",
+    "private-code-as-source",
+    "packet-from-raw-har",
 )
 
 

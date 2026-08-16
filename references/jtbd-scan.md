@@ -110,6 +110,9 @@ python3 "$SKILL/scripts/validate_scan.py" --root . --phase=segments
 | `map-before-job` | `job` 없이 지도를 연다 |
 | `fleet-before-segments` | 세그먼트 표 없이 함대를 연다 |
 | `improvise-without-skill` | 스킬 단계를 건너뛰고 검색만으로 보고서를 쓴다 |
+| `persona-trial-as-mutation` | 페르소나 걷기를 채팅·가입·결제로 바꾼다 |
+| `private-code-as-source` | 비공개 저장소·디컴파일을 원천으로 쓴다 |
+| `packet-from-raw-har` | 원시 HAR를 패키지에 넣거나 pcap을 요구한다 |
 
 시작 직후 `preflight`에 브라우저·수집기 한 줄을 적는다. 브라우저가 없어도 문서만으로 런을 이어간다.
 
